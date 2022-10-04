@@ -88,6 +88,7 @@ form button:hover{
 span{
     color: #2288FF;
     margin-left: 8px;
+    font-weight: 600;
 }
 .output{
     height: 200px;

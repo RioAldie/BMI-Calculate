@@ -7,6 +7,7 @@ let form = document.querySelector('form');
 
 let errMessage =
   '<p>Please Input your<span>Weight</span> and<span>Height</span></p>';
+
 function getDataFromInput(name) {
   if (name === 'weight') {
     weight = document.getElementById(name).value;
@@ -18,7 +19,9 @@ function getDataFromInput(name) {
 function cleanOutput() {
   setTimeout(() => {
     form.reset();
-    return (output.innerHTML = null);
+    height = 0;
+    weight = 0;
+    return (output.innerHTML = '');
   }, 5000);
 }
 function handleCalculate() {
@@ -40,10 +43,9 @@ function handleCalculate() {
     bmiInt = bmiInt + 1;
     diff = 0;
   }
+  //tampilkan output dengan bmi display
   let bmiDisplay = `${bmiInt}.${diff}`;
-  let result = `<p>Your BMI<span>${bmiDisplay}</span> which mean you are category<span>${category}</span></p>`;
-  //print bmidisplay
-  //getCategoryBMI
+  let result = `<p>Your BMI<span>${bmiDisplay}</span> which mean you are<span>${category}</span></p>`;
   cleanOutput();
   return (output.innerHTML = result);
 }
@@ -61,14 +63,3 @@ function handleBMIcategories(bmi) {
     return (category = 'obesitas');
   }
 }
-
-// umus BMI untuk satuan KG dan CM adalah Berat Badan/(Tinggi Badan/100)^2
-// Aplikasi harus menampilkan status BMI sesuai dengan standar berikut:
-// BMI Categories:
-// Underweight = <18.5
-// Normal weight = 18.5 – 24.9
-// Overweight = 25 – 29.9
-// Obesity = BMI of 30 or greater
-// Expected Result
-// Berat Badan 60 KG
-// Tinggi Badan 167 CM BMI = 60 / (167/100)^2 BMI = 60 / (2.8) BMI = 21.5 BMI Categories: Normal Weight
